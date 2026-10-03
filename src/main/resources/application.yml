@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: zon-crm
+
+server:
+  port: 8080
+
+logging:
+  level:
+    uz.zon.crm: DEBUG
