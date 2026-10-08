@@ -15,7 +15,7 @@
     </parent>
 
     <!-- Координаты нашего артефакта: groupId:artifactId:version -->
-    <groupId>uz.zon</groupId>
+    <groupId>pro.softlar</groupId>
     <artifactId>crm</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>crm</name>

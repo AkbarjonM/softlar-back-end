@@ -1,4 +1,4 @@
-package uz.zon.crm.lead;
+package pro.softlar.crm.lead;
 
 import org.springframework.stereotype.Service;
 
@@ -14,19 +14,26 @@ public class LeadService {
     }
 
     public Lead create(Lead lead) {
-        String status = lead.status();
+        String status = lead.getStatus();
 
         if (status == null) {
             status = "NEW";
         }
 
-        Lead toSave = new Lead(null, lead.clientId(), lead.title(), status, lead.amount());
+        Lead toSave = new Lead(lead.getClientId(), lead.getTitle(), status, lead.getAmount());
 
         return repository.save(toSave);
     }
 
     public Optional<Lead> editById(Long id, Lead lead) {
-        return repository.editById(id, lead);
+        return repository.findById(id)
+                .map(existing -> {
+                    existing.setClientId(lead.getClientId());
+                    existing.setTitle(lead.getTitle());
+                    existing.setStatus(lead.getStatus());
+                    existing.setAmount(lead.getAmount());
+                    return repository.save(existing);
+                });
     }
 
     public List<Lead> findAll() {
@@ -38,6 +45,10 @@ public class LeadService {
     }
 
     public boolean deleteById(Long id) {
-        return repository.deleteById(id);
+        if (!repository.existsById(id)) {
+            return false;
+        }
+        repository.deleteById(id);
+        return true;
     }
 }

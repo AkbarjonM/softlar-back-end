@@ -1,4 +1,4 @@
-package uz.zon.crm.lead;
+package pro.softlar.crm.lead;
 
 import jakarta.persistence.*;
 
