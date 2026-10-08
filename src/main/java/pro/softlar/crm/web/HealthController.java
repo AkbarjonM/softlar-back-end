@@ -12,7 +12,7 @@ import java.util.Map;
  * Первый REST-контроллер.
  *
  * @RestController = @Controller + @ResponseBody:
- *   объект, который вернёт метод, Spring автоматически превратит в JSON.
+ * объект, который вернёт метод, Spring автоматически превратит в JSON.
  * @RequestMapping("/api") — общий префикс для всех путей внутри класса.
  */
 @RestController
@@ -24,7 +24,7 @@ public class HealthController {
     public Map<String, Object> health() {
         return Map.of(
                 "status", "UP",
-                "service", "zon-crm",
+                "service", "softlar-crm",
                 "time", LocalDateTime.now().toString()
         );
     }
